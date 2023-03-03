@@ -1,4 +1,4 @@
-import { rest } from 'msw'
+import { rest } from 'msw';
 export const todo = [
   // mock 获取todo
   rest.get('/api/todo', (req, res, ctx) => {
@@ -11,12 +11,12 @@ export const todo = [
           {
             id: '1',
             name: 'To learn node',
-            done: false
-          }
+            done: false,
+          },
         ],
-        msg: ''
-      }),
-    )
+        msg: '',
+      })
+    );
   }),
 
   // mock 添加 todo
@@ -30,14 +30,13 @@ export const todo = [
           {
             id: '1',
             name: 'learning react test',
-            done: false
-          }
+            done: false,
+          },
         ],
-        msg: ''
-      }),
-    )
+        msg: '',
+      })
+    );
   }),
-
 
   // mock 修改 todo
   rest.patch('/api/todo', (req, res, ctx) => {
@@ -50,12 +49,12 @@ export const todo = [
           {
             id: '1',
             name: 'learning react test',
-            done: true
-          }
+            done: true,
+          },
         ],
-        msg: ''
-      }),
-    )
+        msg: '',
+      })
+    );
   }),
 
   // mock 添加 todo
@@ -66,9 +65,8 @@ export const todo = [
       ctx.json({
         status: 200,
         data: [],
-        msg: ''
-      }),
-    )
+        msg: '',
+      })
+    );
   }),
-
-]
+];

@@ -1,2 +1,2 @@
 import { todo } from './todoMock';
-export { todo }
+export { todo };

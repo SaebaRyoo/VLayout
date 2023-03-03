@@ -1,13 +1,11 @@
-import request from '../utils/request'
+import request from '../utils/request';
 
 export async function findAllTodo() {
   return request<API.TodoItem[]>(`/api/todo`, {
     method: 'get',
   });
 }
-export async function createTodoItem(params: {
-    name: string;
-}) {
+export async function createTodoItem(params: { name: string }) {
   return request<API.TodoItem[]>(`/api/todo`, {
     method: 'post',
     data: params,
@@ -28,7 +26,6 @@ export async function updateTodoById(
     ...(options || {}),
   });
 }
-
 
 export async function deleteTodo(
   params: {
