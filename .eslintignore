@@ -4,3 +4,6 @@ postcss.*
 **/*.test.js
 **/*/__mocks__
 commitlint.config.js
+
+
+**/*/jest.*
