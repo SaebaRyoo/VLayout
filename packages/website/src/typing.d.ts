@@ -1,4 +1,3 @@
-declare module 'header';
-declare module 'footer';
+// declare module 'r-material*';
 
 declare module '*.css';

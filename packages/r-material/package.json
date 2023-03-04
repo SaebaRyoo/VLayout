@@ -1,7 +1,8 @@
 {
-  "name": "header",
+  "name": "r-material",
   "version": "0.0.1",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && rollup --config",
     "test": "jest"
@@ -20,5 +21,6 @@
     "ts-jest": "^29.0.5",
     "tslib": "^2.3.1",
     "typescript": "^4.9.3"
-  }
+  },
+  "gitHead": "9f5288b48d1410273ac525c59020c1afd40cfcf9"
 }
