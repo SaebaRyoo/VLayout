@@ -2,6 +2,7 @@
   "compilerOptions": {
     "jsx": "react",
     "allowJs": true,
+    "module": "esnext",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true // 生成*.d.ts

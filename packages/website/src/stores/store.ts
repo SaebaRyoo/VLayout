@@ -16,7 +16,7 @@ const store = configureStore({
 });
 
 // 用于单元测试
-export function setupStore(preloadedState: PreloadedState<RootState> = {}) {
+export function setupStore(preloadedState: PreloadedState<RootState>) {
   return configureStore({
     reducer: rootReducer,
     preloadedState,

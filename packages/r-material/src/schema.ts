@@ -1,10 +1,10 @@
 // schema
-import ButtonSchema from './custom-components/Button/schema';
-import TextSchema from './custom-components/Text/schema';
+import Button from './custom-components/Button/schema';
+import Text from './custom-components/Text/schema';
 
 const schema = {
-  ButtonSchema,
-  TextSchema,
+  Button,
+  Text,
 };
 
 export default schema;

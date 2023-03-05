@@ -1,13 +1,13 @@
-import React from 'react';
-import { Button } from './custom-components/Button';
-import { Text } from './custom-components/Text';
+import React, { Suspense } from 'react';
 
+// 懒加载
 const ComponentMap = {
-  Button: Button,
-  Text: Text,
+  Button: React.lazy(() => import('./custom-components/Button/index')),
+  Text: React.lazy(() => import('./custom-components/Text/index')),
 };
 
 export type Schema = {
+  id: string;
   type: string;
   propValue: any;
   animations: any[];
@@ -20,7 +20,7 @@ export type Schema = {
 };
 
 export type MaterialProps = {
-  schema?: Schema;
+  [key in string]: any;
 };
 const Material: React.FC<MaterialProps> = (props) => {
   const { schema } = props;
@@ -28,7 +28,11 @@ const Material: React.FC<MaterialProps> = (props) => {
   if (!Comp) {
     return null;
   }
-  return <Comp {...props} />;
+  return (
+    <Suspense fallback={<div>Component `{schema.type}` is loading!</div>}>
+      <Comp {...props} />
+    </Suspense>
+  );
 };
 
 export default Material;

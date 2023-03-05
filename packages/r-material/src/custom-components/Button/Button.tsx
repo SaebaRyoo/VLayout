@@ -1,7 +1,11 @@
 import React from 'react';
-import { MaterialProps } from '../..';
+import { MaterialProps } from '../../index';
 
-export function Button({ schema }: MaterialProps) {
+export function Button({ schema, ...rest }: MaterialProps) {
   const { propValue, style } = schema;
-  return <button style={style}>{propValue || '按钮'}</button>;
+  return (
+    <button {...rest} style={style}>
+      {propValue || '按钮'}
+    </button>
+  );
 }

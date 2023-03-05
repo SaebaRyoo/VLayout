@@ -27,5 +27,7 @@ module.exports = {
     'no-extra-boolean-cast': 0,
     'no-unused-vars': 'off',
     'prettier/prettier': 'error',
+    '@typescript-eslint/ban-ts-comment': 'warn',
+    'prefer-const': 'off',
   },
 };
