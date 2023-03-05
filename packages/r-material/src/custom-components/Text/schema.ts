@@ -1,10 +1,14 @@
 export default {
+  id: '',
   type: 'Text',
   propValue: '点击编辑文本', // 组件所使用的值
   animations: [], // 动画列表
   events: {}, // 事件列表
   style: {
     // 组件样式
+    position: 'absolute',
+    left: 0,
+    top: 0,
     width: 200,
     height: 33,
     fontSize: 14,
@@ -13,6 +17,10 @@ export default {
     letterSpacing: 0,
     textAlign: '',
     color: '',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: '1px solid #ccc',
   },
   request: {
     method: 'GET',
