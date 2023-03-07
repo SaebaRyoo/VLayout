@@ -1743,6 +1743,11 @@
     validate-npm-package-name "^4.0.0"
     yargs-parser "20.2.4"
 
+"@lxnxbnq/utils@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.npmmirror.com/@lxnxbnq/utils/-/utils-0.0.5.tgz#72365d4a536f3805aecef01f84e19a80e8d27875"
+  integrity sha512-YYUJynD2+i9WQIBToZUVzu8wJRRvAECekwswtvOgJlKNZVEBJYEBOg+kRVYMhhbUIpAzYHfb3ySvJXYZ0K8OEQ==
+
 "@mswjs/cookies@^0.2.2":
   version "0.2.2"
   resolved "https://registry.npmmirror.com/@mswjs/cookies/-/cookies-0.2.2.tgz"

@@ -29,7 +29,7 @@ const Box = ({ tpl }: any) => {
 const RightToolNav: React.FC = () => {
   return (
     <div className="comps-TemplatesList-wrapper">
-      {template.map((tpl) => (
+      {template.map((tpl: { type: any }) => (
         <Box key={tpl.type} tpl={tpl} />
       ))}
     </div>
