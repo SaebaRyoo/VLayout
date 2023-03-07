@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Toolbar from '@/components/Toolbar';
 import RightToolNav from '@/components/RightToolNav';
 import Editor from '@/components/Editor';
-import AttrToolList from '@/components/AttrToolList';
+import AttrToolTabs from '@/src/components/AttrToolTabs';
 import './App.less';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Toolbar />
       <RightToolNav />
       <Editor />
-      <AttrToolList />
+      <AttrToolTabs />
     </div>
   );
 }

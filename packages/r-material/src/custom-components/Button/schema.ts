@@ -6,6 +6,7 @@ export default {
   events: {}, // 事件列表
   style: {
     // 组件样式
+    boxSizing: 'border-box',
     position: 'absolute',
     left: 0,
     top: 0,
@@ -13,7 +14,8 @@ export default {
     height: 34,
     borderWidth: 1,
     borderColor: '',
-    borderRadius: '',
+    borderStyle: '',
+    borderRadius: 0,
     fontSize: '',
     fontWeight: 400,
     lineHeight: '',
@@ -21,9 +23,5 @@ export default {
     textAlign: '',
     color: '',
     backgroundColor: '',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    border: '1px solid #ccc',
   },
 };

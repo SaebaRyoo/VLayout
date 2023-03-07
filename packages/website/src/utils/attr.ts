@@ -1,45 +1,23 @@
 // 样式数据
-export const styleData = [
-  { key: 'left', label: 'x坐标' },
-  { key: 'top', label: 'y坐标' },
-  { key: 'rotate', label: '旋转角度' },
-  { key: 'width', label: '宽' },
-  { key: 'height', label: '高' },
-  { key: 'color', label: '颜色' },
-  { key: 'backgroundColor', label: '背景色' },
-  { key: 'borderWidth', label: '边框宽度' },
-  { key: 'borderStyle', label: '边框风格' },
-  { key: 'borderColor', label: '边框颜色' },
-  { key: 'borderRadius', label: '边框半径' },
-  { key: 'fontSize', label: '字体大小' },
-  { key: 'fontWeight', label: '字体粗细' },
-  { key: 'lineHeight', label: '行高' },
-  { key: 'letterSpacing', label: '字间距' },
-  { key: 'textAlign', label: '左右对齐' },
-  { key: 'verticalAlign', label: '上下对齐' },
-  { key: 'opacity', label: '不透明度' },
-];
-
-// 映射值
-export const styleMap = {
-  left: 'x 坐标',
-  top: 'y 坐标',
-  rotate: '旋转角度',
-  width: '宽',
-  height: '高',
-  color: '颜色',
-  backgroundColor: '背景色',
-  borderWidth: '边框宽度',
-  borderStyle: '边框风格',
-  borderColor: '边框颜色',
-  borderRadius: '边框半径',
-  fontSize: '字体大小',
-  fontWeight: '字体粗细',
-  lineHeight: '行高',
-  letterSpacing: '字间距',
-  textAlign: '左右对齐',
-  verticalAlign: '上下对齐',
-  opacity: '不透明度',
+export const styleMap: any = {
+  // left: { label: 'x坐标', type: 'number' },
+  // top: { label: 'y坐标', type: 'number' },
+  rotate: { label: '旋转角度', type: 'number' },
+  width: { label: '宽', type: 'number' },
+  height: { label: '高', type: 'number' },
+  color: { label: '颜色', type: 'text' },
+  backgroundColor: { label: '背景色', type: 'text' },
+  borderWidth: { label: '边框宽度', type: 'number' },
+  borderStyle: { label: '边框风格', type: 'select' },
+  borderColor: { label: '边框颜色', type: 'text' },
+  borderRadius: { label: '边框半径', type: 'number' },
+  fontSize: { label: '字体大小', type: 'number' },
+  fontWeight: { label: '字体粗细', type: 'number' },
+  lineHeight: { label: '行高', type: 'number' },
+  letterSpacing: { label: '字间距', type: 'number' },
+  textAlign: { label: '左右对齐', type: 'select' },
+  verticalAlign: { label: '上下对齐', type: 'select' },
+  opacity: { label: '不透明度', type: 'number' },
 };
 
 // 水平方向
@@ -85,9 +63,7 @@ export const borderStyleOptions = [
   },
 ];
 
-export const selectKey = ['textAlign', 'borderStyle', 'verticalAlign'];
-
-export const optionMap = {
+export const optionMap: any = {
   textAlign: textAlignOptions,
   borderStyle: borderStyleOptions,
   verticalAlign: verticalAlignOptions,

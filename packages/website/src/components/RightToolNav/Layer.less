@@ -1,0 +1,36 @@
+.comps-toolnav-layer {
+  height: 200px;
+  width: 100%;
+  overflow: auto;
+  padding: 12px 0;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.comps-toolnav-layer-item {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  align-items: center;
+
+  &:hover {
+    background-color: #ddd;
+    .comps-toolnav-layer-item-icons {
+      display: block;
+    }
+  }
+}
+
+.comps-toolnav-layer-item-click {
+  background-color: #ecf5ff;
+  color: #409eff;
+}
+
+.comps-toolnav-layer-item-icons {
+  display: none;
+
+  & > * {
+    margin-left: 6px;
+  }
+}
