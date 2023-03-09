@@ -19,7 +19,8 @@
     "paths": {
       "@/src/*": ["src/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/components/*": ["src/components/*"]
+      "@/components/*": ["src/components/*"],
+      "@/features/*": ["src/features/*"]
     }
   },
   "include": ["src"],

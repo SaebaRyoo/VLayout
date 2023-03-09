@@ -1,8 +1,7 @@
-import { RootState } from '@/src/stores/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Define a type for the slice state
-interface EditorState {
+interface ToolbarState {
   canvas: {
     width: number;
     height: number;
@@ -10,7 +9,7 @@ interface EditorState {
 }
 
 // Define the initial state using that type
-const initialState: EditorState = {
+const initialState: ToolbarState = {
   canvas: {
     width: 375,
     height: 667,

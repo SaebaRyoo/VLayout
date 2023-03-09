@@ -38,7 +38,11 @@ const AttrToolTabs: React.FC = () => {
       key: 'styles',
       label: '属性',
       children: schema?.style ? (
-        <Attrs id={schema?.id} style={schema?.style && getUsefulStyle()} />
+        <Attrs
+          propValue={schema.propValue}
+          id={schema?.id}
+          style={schema?.style && getUsefulStyle()}
+        />
       ) : null,
     },
     {

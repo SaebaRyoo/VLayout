@@ -1,11 +1,14 @@
 import { RootState } from '@/src/stores/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Schema } from 'r-material';
+import nanoid from '@/src/utils/nanoid';
+import { clone } from 'ramda';
 
 // Define a type for the slice state
 interface EditorState {
   curSchemaId: string;
   schemaList: Schema[];
+  copyedSchema: Schema | null;
   rightClick: {
     left: number;
     top: number;
@@ -17,6 +20,7 @@ interface EditorState {
 const initialState: EditorState = {
   curSchemaId: '',
   schemaList: [],
+  copyedSchema: null,
   // 画布内右击事件
   rightClick: {
     left: 0,
@@ -34,6 +38,24 @@ export const EditorSlice = createSlice({
     },
     addSchemas: (state, action: PayloadAction<Schema>) => {
       state.schemaList.push(action.payload);
+    },
+    copySchema: (state) => {
+      const index = state.schemaList.findIndex(
+        (schema) => schema.id === state.curSchemaId
+      );
+      const schema = state.schemaList[index];
+      state.copyedSchema = schema;
+    },
+    pasteSchema: (
+      state,
+      action: PayloadAction<{ left: number; top: number }>
+    ) => {
+      const { left, top } = action.payload;
+      const copyedSchema = clone(state.copyedSchema as Schema);
+      copyedSchema.id = nanoid();
+      copyedSchema.style.left = left;
+      copyedSchema.style.top = top;
+      state.schemaList.push(copyedSchema);
     },
     delSchemaById: (state, action: PayloadAction<{ id: string }>) => {
       const { id } = action.payload;
@@ -82,6 +104,13 @@ export const EditorSlice = createSlice({
       const schema = state.schemaList[index];
       schema.style[styleProps] = value;
     },
+    updatePropValue: (state, action: PayloadAction<any>) => {
+      const index = state.schemaList.findIndex(
+        (schema) => schema.id === state.curSchemaId
+      );
+      const schema = state.schemaList[index];
+      schema.propValue = action.payload;
+    },
 
     updateSchemaSize: (
       state,
@@ -123,9 +152,12 @@ export const {
   setCurSchemaId,
   updateSchemaPos,
   updateSchemaByProp,
+  updatePropValue,
   updateSchemaSize,
   toggleRightClick,
   setRightClickPos,
+  copySchema,
+  pasteSchema,
 } = EditorSlice.actions;
 
 // Selectors
