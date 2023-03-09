@@ -6,7 +6,7 @@ import {
   updateSchemaByProp,
   updateSchemaSize,
 } from './editor.slice';
-import type { Schema } from 'r-material';
+import type { Schema } from '@lxnxbnq/r-material';
 
 const pointHalfSize = 4;
 

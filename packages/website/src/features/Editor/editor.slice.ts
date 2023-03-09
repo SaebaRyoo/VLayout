@@ -1,6 +1,6 @@
 import { RootState } from '@/src/stores/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { Schema } from 'r-material';
+import type { Schema } from '@lxnxbnq/r-material';
 import nanoid from '@/src/utils/nanoid';
 import { clone } from 'ramda';
 

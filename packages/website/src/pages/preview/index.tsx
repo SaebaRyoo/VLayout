@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.less';
-import Material from 'r-material';
+import Material from '@lxnxbnq/r-material';
 import { useAppSelector } from '@/src/hooks/typedHooks';
 
 const Preview: React.FC = () => {
