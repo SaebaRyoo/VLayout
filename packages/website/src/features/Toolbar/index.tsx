@@ -5,15 +5,17 @@ import { useAppDispatch, useAppSelector } from '@/src/hooks/typedHooks';
 import { clearSchemas, setCurSchemaId } from '../Editor/editor.slice';
 import { setCanvasHeight, setCanvasWidth } from './toolbar.slice';
 import { copyContent } from '@/src/utils/copy';
+import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const canvasSize = useAppSelector((state) => state.toolbar.canvas);
   const schemaList = useAppSelector((state) => state.editor.schemaList);
   return (
     <header className="comps-toolbar-wrapper">
       {/* <Button onClick={() => console.log('预览')}>截图</Button> */}
-      <Button onClick={() => console.log('预览')}>预览</Button>
+      <Button onClick={() => navigate('/preview')}>预览</Button>
       <Button
         onClick={() => {
           dispatch(setCurSchemaId(''));
@@ -34,7 +36,6 @@ const Header: React.FC = () => {
       >
         JSON 复制
       </Button>
-      <Button onClick={() => console.log('预览')}>保存</Button>
       <div style={{ marginLeft: 20 }}>画布尺寸:</div>
       <div className="comp-toobar-canvas-control">
         <Input
