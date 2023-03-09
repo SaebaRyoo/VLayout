@@ -1,11 +1,12 @@
 import React from 'react';
 import { MaterialProps } from '../../index';
+import './Text.less';
 
 export function Text({ schema, ...rest }: MaterialProps) {
   const { propValue, style } = schema;
   return (
-    <div {...rest} style={style || {}}>
-      {propValue || '双击编辑'}
+    <div className="r-material-Text" {...rest} style={style || {}}>
+      {propValue}
     </div>
   );
 }
