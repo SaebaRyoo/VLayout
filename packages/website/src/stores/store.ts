@@ -5,6 +5,8 @@ import {
   PreloadedState,
 } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
+import { persistStore } from 'redux-persist';
+import thunk from 'redux-thunk';
 
 /**
  * creates a Redux store, and also automatically
@@ -13,6 +15,7 @@ import rootReducer from './reducers';
  **/
 const store = configureStore({
   reducer: rootReducer,
+  middleware: [thunk],
 });
 
 // 用于单元测试
@@ -36,3 +39,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >;
 
 export default store;
+
+export const persistor = persistStore(store);

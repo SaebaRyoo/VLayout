@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Material from 'r-material';
-import type { Schema } from 'r-material';
+import Material from '@lxnxbnq/r-material';
+import type { Schema } from '@lxnxbnq/r-material';
 import { useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from '@/utils/DragTypes';

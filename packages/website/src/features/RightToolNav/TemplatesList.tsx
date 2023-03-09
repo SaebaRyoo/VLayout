@@ -1,6 +1,6 @@
 import * as React from 'react';
-import template from 'r-material/dist/template';
-import schema from 'r-material/dist/schema';
+import template from '@lxnxbnq/r-material/dist/template';
+import schema from '@lxnxbnq/r-material/dist/schema';
 import './TemplatesList.less';
 import { useDrag } from 'react-dnd';
 
