@@ -4,6 +4,7 @@ import React, { Suspense } from 'react';
 const ComponentMap = {
   Button: React.lazy(() => import('./custom-components/Button/index')),
   Text: React.lazy(() => import('./custom-components/Text/index')),
+  Image: React.lazy(() => import('./custom-components/Image/index')),
 };
 
 export type Schema = {

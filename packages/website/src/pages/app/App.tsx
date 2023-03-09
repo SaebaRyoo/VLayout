@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Toolbar from '@/components/Toolbar';
-import RightToolNav from '@/components/RightToolNav';
-import Editor from '@/components/Editor';
-import AttrToolTabs from '@/src/components/AttrToolTabs';
+import React from 'react';
+import Toolbar from '@/features/Toolbar';
+import RightToolNav from '@/features/RightToolNav';
+import Editor from '@/features/Editor';
+import AttrToolTabs from '@/features/AttrToolTabs';
 import './App.less';
 
 function App() {

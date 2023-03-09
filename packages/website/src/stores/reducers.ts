@@ -1,5 +1,5 @@
-import editor from '@/components/Editor/editor.slice';
-import toolbar from '@/components/Toolbar/toolbar.slice';
+import editor from '@/features/Editor/editor.slice';
+import toolbar from '@/features/Toolbar/toolbar.slice';
 
 export default {
   editor,

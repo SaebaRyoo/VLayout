@@ -2,14 +2,16 @@ import React, { memo } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
 import { styleMap, optionMap } from '@/utils/attr';
 import { useAppDispatch } from '../../hooks/typedHooks';
-import { updateSchemaByProp } from '../Editor/editor.slice';
+import { updatePropValue, updateSchemaByProp } from '../Editor/editor.slice';
+import ColorPicker from '@/src/components/ColorPicker';
 
 type AttrsProps = {
   style?: any;
   id?: string;
+  propValue: any;
 };
 
-const Attrs: React.FC<AttrsProps> = ({ style, id }) => {
+const Attrs: React.FC<AttrsProps> = ({ style, id, propValue }) => {
   const dispatch = useAppDispatch();
 
   const handleChange = (styleProps: string, value: number | string) => {
@@ -48,6 +50,16 @@ const Attrs: React.FC<AttrsProps> = ({ style, id }) => {
         />
       );
     }
+
+    if (type === 'color') {
+      return (
+        <ColorPicker
+          color={value}
+          onChange={(value: any) => handleChange(styleProp, value)}
+        />
+      );
+    }
+    return null;
   };
 
   const renderFormItem = () => {
@@ -63,13 +75,22 @@ const Attrs: React.FC<AttrsProps> = ({ style, id }) => {
 
   return (
     <Form labelCol={{ span: 8 }} wrapperCol={{ span: 12 }} autoComplete="off">
+      <Form.Item label="默认内容">
+        <Input
+          value={propValue}
+          onChange={(e) => dispatch(updatePropValue(e.target.value))}
+        />
+      </Form.Item>
       {renderFormItem()}
     </Form>
   );
 };
 
 function areEqual(prevProps: AttrsProps, nextProps: AttrsProps) {
-  if (JSON.stringify(prevProps.style) === JSON.stringify(nextProps.style)) {
+  if (
+    JSON.stringify(prevProps.style) === JSON.stringify(nextProps.style) &&
+    prevProps.propValue === nextProps.propValue
+  ) {
     return true;
   }
   return false;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Material from 'r-material';
 import type { Schema } from 'r-material';
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from '@/utils/DragTypes';
 import { useAppSelector, useAppDispatch } from '@/src/hooks/typedHooks';
@@ -11,13 +11,17 @@ import {
   updateSchemaPos,
   selectCurSchema,
   toggleRightClick,
-  setRightClickPos,
 } from './editor.slice';
 import nanoid from '@/src/utils/nanoid';
 import { clone } from 'ramda';
 import './index.less';
 import PointsWrapper from './PointsWrapper';
-import RightClick from './RightClick';
+import RightClick from '@/components/RightClickMenu';
+import ItemRightClickMenu from './ItemClickMenu';
+import CanvasRightClickMenu from './CanvasRightClick';
+
+const CANVAS_MENU_TAG = 'canvas-click-menu';
+const ITEM_MENU_TAG = 'item-click-menu';
 
 const defaultInfo = {
   x: 0,
@@ -65,9 +69,15 @@ const calcPos = (x: number, y: number, schema: Schema) => {
 };
 
 const Editor: React.FC = () => {
+  const [menuTag, setMenuTag] = useState<string>('');
+  const [pastePosition, setPastePosition] = useState<{
+    left: number;
+    top: number;
+  }>({ left: 0, top: 0 });
   const schemaList = useAppSelector((state) => state.editor.schemaList);
   const curSchemaId = useAppSelector((state) => state.editor.curSchemaId);
   const canvasSize = useAppSelector((state) => state.toolbar.canvas);
+  const copyedSchmea = useAppSelector((state) => state.editor.copyedSchema);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -117,26 +127,14 @@ const Editor: React.FC = () => {
     }),
   }));
 
-  const handleContextMenu = (event: any) => {
-    // 屏蔽默认右键事件
-    event.preventDefault();
-    // 获得点击的位置
-    let { clientX, clientY } = event;
-    // console.log('clientX--->', clientX);
-    dispatch(
-      setRightClickPos({
-        left: clientX,
-        top: clientY,
-      })
-    );
-  };
   // 处理画布内元素移动
   const handleMouseDown = (e: MouseEvent, id: string) => {
     e.preventDefault();
+    e.stopPropagation();
     dispatch(setCurSchemaId(id));
     if (e.button === 2) {
       // 打开右击键
-      document.addEventListener('contextmenu', handleContextMenu);
+      setMenuTag(ITEM_MENU_TAG);
       dispatch(toggleRightClick(true));
       return;
     }
@@ -175,6 +173,24 @@ const Editor: React.FC = () => {
     document.addEventListener('mouseup', up);
   };
 
+  const handleCanvasRightClick = (e: any) => {
+    if (e.button === 2) {
+      let left = e.clientX - canvasInfo.x;
+      let top = e.clientY - canvasInfo.y;
+
+      // 处理超出画布的边界情况
+      const caclRes = calcPos(left, top, copyedSchmea as Schema);
+      left = caclRes.x;
+      top = caclRes.y;
+      setPastePosition({
+        left: left,
+        top: top,
+      });
+      setMenuTag(CANVAS_MENU_TAG);
+      dispatch(toggleRightClick(true));
+      // 打开右击键
+    }
+  };
   return (
     <section
       style={{
@@ -182,7 +198,13 @@ const Editor: React.FC = () => {
       }}
       className="comps-editor-wrapper"
     >
-      <RightClick handleContextMenu={handleContextMenu} />
+      <RightClick>
+        {menuTag === CANVAS_MENU_TAG ? (
+          <CanvasRightClickMenu pastePosition={pastePosition} />
+        ) : (
+          <ItemRightClickMenu />
+        )}
+      </RightClick>
       <div className="comps-editor-wrapper-inner">
         <div
           id="canvasId"
@@ -190,6 +212,7 @@ const Editor: React.FC = () => {
             height: canvasSize.height,
             width: canvasSize.width,
           }}
+          onMouseDown={handleCanvasRightClick}
           className="comps-editor-canvas"
           ref={drop}
         >
