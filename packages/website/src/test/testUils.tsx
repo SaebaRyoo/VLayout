@@ -20,7 +20,7 @@ export function renderWithProviders(
   {
     preloadedState,
     // 如果没有传入 store, 则自动创建一个 store 实例
-    store = setupStore(preloadedState),
+    store = setupStore(preloadedState as never),
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
