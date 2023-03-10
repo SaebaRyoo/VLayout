@@ -7,7 +7,7 @@ git clone https://github.com/SaebaRyoo/VLayout.git
 
 cd VLayout
 
-yarn init
+yarn
 
 # 依赖项打包
 npx lerna run build
