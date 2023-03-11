@@ -8,16 +8,15 @@ import {
 
 type RightClickProps = {
   children: ReactElement;
-  showFalse?: (data: any) => void;
 };
 
-const RightClick: React.FC<RightClickProps> = ({ children, showFalse }) => {
+const RightClick: React.FC<RightClickProps> = ({ children }) => {
   const dispatch = useAppDispatch();
   const show = useAppSelector((state) => state.editor.rightClick.show);
   const left = useAppSelector((state) => state.editor.rightClick.left);
   const top = useAppSelector((state) => state.editor.rightClick.top);
 
-  const handleContextMenu = (event: any) => {
+  const handleContextMenu = (event: MouseEvent) => {
     // 屏蔽默认右键事件
     event.preventDefault();
     // 获得点击的位置

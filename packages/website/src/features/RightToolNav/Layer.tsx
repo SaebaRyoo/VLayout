@@ -6,7 +6,6 @@ import {
   delSchemaById,
   swapSchema,
 } from '../Editor/editor.slice';
-import templates from '@lxnxbnq/r-material/dist/template';
 import { UpOutlined, DownOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const Layer = () => {

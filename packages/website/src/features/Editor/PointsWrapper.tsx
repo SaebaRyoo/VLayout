@@ -7,11 +7,12 @@ import {
   updateSchemaSize,
 } from './editor.slice';
 import type { Schema } from '@lxnxbnq/r-material';
+import type { CanvasInfo } from './index';
 
 const pointHalfSize = 4;
 
-const getPointsWrapperStyle = (style: any) => {
-  const result: any = {};
+const getPointsWrapperStyle = (style: Schema['style']) => {
+  const result: Schema['style'] = {};
   ['width', 'height', 'top', 'left', 'transform'].forEach((attr) => {
     result[attr] = style[attr];
   });
@@ -20,7 +21,7 @@ const getPointsWrapperStyle = (style: any) => {
 
 type PointsProps = {
   children: ReactElement;
-  canvasInfo: any;
+  canvasInfo: CanvasInfo;
 };
 
 const Points = ({ children, canvasInfo }: PointsProps) => {
@@ -99,7 +100,10 @@ const Points = ({ children, canvasInfo }: PointsProps) => {
     );
   };
 
-  const handleMouseDown = (e: any, tag: string) => {
+  const handleMouseDown = (
+    e: React.MouseEvent<HTMLDivElement>,
+    tag: string
+  ) => {
     e.preventDefault();
     const targetX = e.clientX;
     const targetY = e.clientY;
@@ -148,7 +152,9 @@ const Points = ({ children, canvasInfo }: PointsProps) => {
         }
       />
       <div
-        onMouseDown={(e) => handleMouseDown(e, 'rb')}
+        onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
+          handleMouseDown(e, 'rb')
+        }
         style={{
           left: width - pointHalfSize,
           top: height - pointHalfSize,
@@ -160,7 +166,9 @@ const Points = ({ children, canvasInfo }: PointsProps) => {
         }
       />
       <div
-        onMouseDown={(e) => handleMouseDown(e, 'bm')}
+        onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
+          handleMouseDown(e, 'bm')
+        }
         style={{
           left: width / 2 - pointHalfSize,
           top: height - pointHalfSize,
