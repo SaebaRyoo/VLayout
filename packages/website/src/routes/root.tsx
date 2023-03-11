@@ -9,7 +9,11 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: '/preview',
+    path: '/visualization-layout',
+    element: <App />,
+  },
+  {
+    path: '/visualization-layout/preview',
     element: <Preview />,
   },
 ]);

@@ -3,8 +3,12 @@ import { HexColorPicker, HexColorInput } from 'react-colorful';
 import useClickOutside from '@/src/hooks/useClickOutside';
 import './ColorPicker.less';
 
-export const ColorPicker = ({ color, onChange }: any) => {
-  const popover = useRef<any>();
+interface ColorPickerProps {
+  color: string;
+  onChange: (v: string) => void;
+}
+export const ColorPicker = ({ color, onChange }: ColorPickerProps) => {
+  const popover = useRef(null);
   const [isOpen, toggle] = useState(false);
 
   const close = useCallback(() => toggle(false), []);

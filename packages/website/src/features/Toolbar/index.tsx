@@ -15,7 +15,9 @@ const Header: React.FC = () => {
   return (
     <header className="comps-toolbar-wrapper">
       {/* <Button onClick={() => console.log('预览')}>截图</Button> */}
-      <Button onClick={() => navigate('/preview')}>预览</Button>
+      <Button onClick={() => navigate('/visualization-layout/preview')}>
+        预览
+      </Button>
       <Button
         onClick={() => {
           dispatch(setCurSchemaId(''));

@@ -6,10 +6,16 @@ import { useDrag } from 'react-dnd';
 
 import { ItemTypes } from '@/utils/DragTypes';
 
-const Box = ({ tpl }: any) => {
-  // @ts-ignore
+type TemplateProps = {
+  type: string;
+  displayName: string;
+};
+
+// keyof schema
+
+const Box: React.FC<{ tpl: TemplateProps }> = ({ tpl }) => {
   // 自定义组件库中默认的schmea
-  const cSchema = schema[tpl.type];
+  const cSchema = schema[tpl.type as keyof typeof schema];
   const [, drag] = useDrag(() => ({
     type: ItemTypes.BOX,
     item: { cSchema },
@@ -29,7 +35,7 @@ const Box = ({ tpl }: any) => {
 const RightToolNav: React.FC = () => {
   return (
     <div className="comps-TemplatesList-wrapper">
-      {template.map((tpl: { type: any }) => (
+      {template.map((tpl: TemplateProps) => (
         <Box key={tpl.type} tpl={tpl} />
       ))}
     </div>

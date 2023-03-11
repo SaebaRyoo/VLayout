@@ -6,6 +6,7 @@ import { useAppSelector } from '@/src/hooks/typedHooks';
 import Attrs from './Attrs';
 
 import './index.less';
+import type { Schema } from '@lxnxbnq/r-material';
 
 const BlackList = ['position', 'left', 'top'];
 
@@ -23,7 +24,7 @@ const AttrToolTabs: React.FC = () => {
   // 由于React的更新策略会导致在移动的时候不停的更新整个子组件，
   // 所以直接排除掉{x,y}这类频繁变动的state，然后在子组件内做优化策略。
   const getUsefulStyle = () => {
-    const style: any = {};
+    const style: Schema['style'] = {};
     schema &&
       Object.keys(schema.style).forEach((key) => {
         if (BlackList.indexOf(key) < 0) {

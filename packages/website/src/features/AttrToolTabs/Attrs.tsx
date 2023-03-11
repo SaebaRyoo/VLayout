@@ -4,9 +4,10 @@ import { styleMap, optionMap } from '@/utils/attr';
 import { useAppDispatch } from '../../hooks/typedHooks';
 import { updatePropValue, updateSchemaByProp } from '../Editor/editor.slice';
 import ColorPicker from '@/src/components/ColorPicker';
+import type { Schema } from '@lxnxbnq/r-material';
 
 type AttrsProps = {
-  style?: any;
+  style?: Schema['style'];
   id?: string;
   propValue: any;
 };
@@ -22,8 +23,12 @@ const Attrs: React.FC<AttrsProps> = ({ style, id, propValue }) => {
     dispatch(updateSchemaByProp({ styleProps, value, id: id as string }));
   };
 
-  const renderComp = (style: any, styleProp: string, type: string) => {
-    const value = style[styleProp];
+  const renderComp = (
+    style: Schema['style'] | undefined,
+    styleProp: string,
+    type: string
+  ) => {
+    const value = style ? style[styleProp] : null;
     if (type === 'number') {
       return (
         <InputNumber
@@ -55,7 +60,7 @@ const Attrs: React.FC<AttrsProps> = ({ style, id, propValue }) => {
       return (
         <ColorPicker
           color={value}
-          onChange={(value: any) => handleChange(styleProp, value)}
+          onChange={(value: string) => handleChange(styleProp, value)}
         />
       );
     }

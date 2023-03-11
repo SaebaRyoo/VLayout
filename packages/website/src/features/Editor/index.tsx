@@ -23,19 +23,26 @@ import CanvasRightClickMenu from './CanvasRightClick';
 const CANVAS_MENU_TAG = 'canvas-click-menu';
 const ITEM_MENU_TAG = 'item-click-menu';
 
-const defaultInfo = {
+export type CanvasInfo = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+const defaultInfo: CanvasInfo = {
   x: 0,
   y: 0,
   width: 0,
   height: 0,
 };
 // 画布相关值
-let canvasInfo = clone(defaultInfo);
+let canvasInfo: CanvasInfo = clone(defaultInfo);
 
 const getMaterialStyle = (schema: Schema) => {
   const newSchema = clone(schema);
   const style = newSchema.style;
-  const result: any = {};
+  const result: Schema['style'] = {};
 
   Object.keys(style).forEach((key) => {
     if (!['left', 'top', 'transform'].includes(key)) {
@@ -82,7 +89,9 @@ const Editor: React.FC = () => {
 
   useEffect(() => {
     let canvasNode = document.getElementById('canvasId');
-    const { x, y, width, height } = canvasNode!.getBoundingClientRect();
+    const { x, y, width, height } = (
+      canvasNode as HTMLElement
+    ).getBoundingClientRect();
     canvasInfo = {
       x,
       y,
@@ -115,7 +124,7 @@ const Editor: React.FC = () => {
 
   const [, drop] = useDrop(() => ({
     accept: ItemTypes.BOX,
-    drop: ({ cSchema }: any, monitor) => {
+    drop: ({ cSchema }: { cSchema: Schema }, monitor) => {
       const { x, y } = monitor.getClientOffset() as { x: number; y: number };
 
       // 拷贝一下schema数据，避免指针出错
@@ -173,7 +182,7 @@ const Editor: React.FC = () => {
     document.addEventListener('mouseup', up);
   };
 
-  const handleCanvasRightClick = (e: any) => {
+  const handleCanvasRightClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.button === 2) {
       let left = e.clientX - canvasInfo.x;
       let top = e.clientY - canvasInfo.y;
