@@ -7,6 +7,7 @@ import Attrs from './Attrs';
 
 import './index.less';
 import type { Schema } from '@lxnxbnq/r-material';
+import Events from './Events';
 
 const BlackList = ['position', 'left', 'top'];
 
@@ -16,7 +17,6 @@ const AttrToolTabs: React.FC = () => {
   const curSchemaId = useAppSelector((state) => state.editor.curSchemaId);
 
   const schema = selectCurSchema(schemaList, curSchemaId);
-
   const handleChange = (activeKey: string) => {
     setActiveKey(activeKey);
   };
@@ -49,7 +49,9 @@ const AttrToolTabs: React.FC = () => {
     {
       key: 'events',
       label: '事件',
-      children: `content2`,
+      children: schema?.events ? (
+        <Events id={schema?.id} events={schema?.events} />
+      ) : null,
     },
     // {
     //   key: 'animations',

@@ -140,6 +140,25 @@ export const EditorSlice = createSlice({
       state.rightClick.left = left;
       state.rightClick.top = top;
     },
+    // 设置事件
+    setEvents: (
+      state,
+      action: PayloadAction<{ value: string; key: string }>
+    ) => {
+      const { value, key } = action.payload;
+      const index = state.schemaList.findIndex(
+        (schema) => schema.id === state.curSchemaId
+      );
+      const schema = state.schemaList[index];
+      schema.events[key] = value;
+    },
+    removeEvent: (state, action: PayloadAction<string>) => {
+      const index = state.schemaList.findIndex(
+        (schema) => schema.id === state.curSchemaId
+      );
+      const schema = state.schemaList[index];
+      delete schema.events[action.payload];
+    },
   },
 });
 
@@ -158,6 +177,8 @@ export const {
   setRightClickPos,
   copySchema,
   pasteSchema,
+  setEvents,
+  removeEvent,
 } = EditorSlice.actions;
 
 // Selectors
