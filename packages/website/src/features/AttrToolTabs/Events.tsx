@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/src/hooks/typedHooks';
 interface EventsProps {
   id: string;
   events: {
-    [key in string]: (data?: any) => void;
+    [key in string]: string;
   };
 }
 

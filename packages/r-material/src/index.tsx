@@ -16,7 +16,7 @@ export type Schema = {
     [key in string]: string;
   };
   style: {
-    [key in string]: string | number;
+    [key in string]: any;
   };
 };
 
