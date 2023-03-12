@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
 import { styleMap, optionMap } from '@/utils/attr';
 import { useAppDispatch } from '../../hooks/typedHooks';
@@ -15,13 +15,16 @@ type AttrsProps = {
 const Attrs: React.FC<AttrsProps> = ({ style, id, propValue }) => {
   const dispatch = useAppDispatch();
 
-  const handleChange = (styleProps: string, value: number | string) => {
-    if (styleProps === 'rotate') {
-      styleProps = 'transform';
-      value = `rotate(${value}deg)`;
-    }
-    dispatch(updateSchemaByProp({ styleProps, value, id: id as string }));
-  };
+  const handleChange = useCallback(
+    (styleProps: string, value: number | string) => {
+      if (styleProps === 'rotate') {
+        styleProps = 'transform';
+        value = `rotate(${value}deg)`;
+      }
+      dispatch(updateSchemaByProp({ styleProps, value, id: id as string }));
+    },
+    []
+  );
 
   const renderComp = (
     style: Schema['style'] | undefined,

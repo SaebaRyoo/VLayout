@@ -13,10 +13,10 @@ export type Schema = {
   propValue: any;
   animations: any[];
   events: {
-    [key in string]: any;
+    [key in string]: string;
   };
   style: {
-    [key in string]: any;
+    [key in string]: string | number;
   };
 };
 

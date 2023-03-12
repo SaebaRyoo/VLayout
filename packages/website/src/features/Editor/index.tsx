@@ -234,6 +234,7 @@ const Editor: React.FC = () => {
                       handleMouseDown(e, schema.id)
                     }
                     key={schema.id}
+                    isEdit={true}
                     schema={getMaterialStyle(schema)}
                   />
                 </PointsWrapper>
@@ -243,6 +244,7 @@ const Editor: React.FC = () => {
                 <Material
                   onMouseDown={(e: MouseEvent) => handleMouseDown(e, schema.id)}
                   key={schema.id}
+                  isEdit={true}
                   schema={schema}
                 />
               );
